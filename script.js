@@ -121,20 +121,29 @@ function updateBackgroundBasedOnSunriseSunset(time) {
     let backgroundColor;
 
     // Before sunrise: Soft red (Night)
-    if (time < sunriseTime) {
+    if (time < sunriseTime - 1) {
         backgroundColor = "rgb(180, 100, 100)"; // Night: Soft red
     }
-    // After sunset: Amber (Evening)
-    else if (time >= sunsetTime) {
-        backgroundColor = "rgb(255, 220, 180)"; // Evening: Amber
+    // Dawn (1 hour before sunrise): Blue
+    else if (time >= sunriseTime - 1 && time < sunriseTime) {
+        backgroundColor = "rgb(180, 210, 255)"; // Dawn: Blue
     }
     // Daytime: Neutral white
-    else {
+    else if (time >= sunriseTime && time < sunsetTime) {
         backgroundColor = "rgb(255, 255, 240)"; // Daytime: Neutral white
+    }
+    // Evening (1 hour after sunset): Amber
+    else if (time >= sunsetTime && time < sunsetTime + 1) {
+        backgroundColor = "rgb(255, 220, 180)"; // Evening: Amber
+    }
+    // After sunset: Soft red (Night)
+    else {
+        backgroundColor = "rgb(180, 100, 100)"; // Night: Soft red
     }
 
     app.style.backgroundColor = backgroundColor;
 }
+
 
 // Add event listener to the button to fetch weather
 fetchWeatherButton.addEventListener("click", () => {
