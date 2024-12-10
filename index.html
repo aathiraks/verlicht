@@ -11,6 +11,12 @@
             box-sizing: border-box;
         }
 
+        #logo {
+            width: 150px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px; /* Add some space below the logo */
+        }
+
         #app {
             height: 100vh;
             display: flex;
@@ -74,9 +80,10 @@
 </head>
 <body>
     <div id="app">
+        <img src="logo.png" alt="Verlicht Logo" id="logo" />
         <div id="controls">
-            <h1>Verlicht</h1>
-            <input type="text" id="locationInput" placeholder="Enter location (e.g., New York)" />
+            
+            <input type="text" id="locationInput" placeholder="Location" />
             <button id="fetchWeather">Get Weather</button>
         </div>
 
